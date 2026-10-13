@@ -1,0 +1,31 @@
+
+<html>
+<head><title>Admin Page</title></head>
+<body>
+<h1>Admin - Manage Events</h1>
+<input id="name" placeholder="Event Name">
+<input id="date" type="date">
+<button onclick="add()">Add Event</button>
+<div id="list"></div>
+<script>
+function show(){
+let e=JSON.parse(localStorage.events||"[]");
+list.innerHTML=e.map((x,i)=>
+`${x.name} - ${x.date}
+<button onclick="del(${i})">Delete</button><br>`).join("");
+}
+function add(){
+let e=JSON.parse(localStorage.events||"[]");
+if(!name.value||!date.value)return alert("Enter details");
+e.push({name:name.value,date:date.value});
+localStorage.events=JSON.stringify(e);
+name.value="";date.value="";show();
+}
+function del(i){
+let e=JSON.parse(localStorage.events||"[]");
+e.splice(i,1);localStorage.events=JSON.stringify(e);show();
+}
+show();
+</script>
+</body>
+</html>

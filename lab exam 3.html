@@ -1,0 +1,25 @@
+
+<html>
+<head><title>User Registration</title></head>
+<body>
+<h1>Register for an Event</h1>
+<input id="student" placeholder="Student Name">
+<select id="event"></select>
+<button onclick="register()">Register</button>
+<p id="msg"></p>
+<script>
+let e=JSON.parse(localStorage.events||"[]");
+event.innerHTML=e.map(x=>
+`<option>${x.name}</option>`).join("");
+function register(){
+if(!student.value||!event.value)
+return msg.innerText="Enter your details";
+let r=JSON.parse(localStorage.registrations||"[]");
+r.push({student:student.value,event:event.value});
+localStorage.registrations=JSON.stringify(r);
+msg.innerText="Registration Successful!";
+student.value="";
+}
+</script>
+</body>
+</html>

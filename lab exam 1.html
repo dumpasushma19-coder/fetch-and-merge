@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>College Events</title>
+<style>
+body{font-family:Arial;text-align:center;background:#eee}
+nav{background:navy;padding:15px}
+nav a{color:white;margin:15px}
+.card{background:white;padding:15px;margin:15px}
+</style>
+</head>
+<body>
+<nav>
+<a href="index.htm">Home</a>
+<a href="admin.html">Admin</a>
+<a href="user.html">User</a>
+</nav>
+<h1>College Event Management</h1>
+<div id="events"></div>
+<script>
+let events=JSON.parse(localStorage.events||"[]");
+if(!events.length)events=[
+{name:"Tech Fest",date:"2026-11-10"},
+{name:"Cultural Fest",date:"2026-11-15"}];
+localStorage.events=JSON.stringify(events);
+events.forEach(e=>{
+document.getElementById("events").innerHTML+=
+`<div class="card"><h2>${e.name}</h2>
+<p>Date: ${e.date}</p>
+<a href="user.html">Register</a></div>`;
+});
+</script>
+</body>
+</html>
+q22qq                                                                                                                                                                                                                                                                                                                       
